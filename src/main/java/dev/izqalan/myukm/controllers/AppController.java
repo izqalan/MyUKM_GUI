@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dev.izqalan.myukm_netbeans.controllers;
+package dev.izqalan.myukm.controllers;
 
-import dev.izqalan.myukm_netbeans.models.UserModel;
-import dev.izqalan.myukm_netbeans.views.LoginView;
-import dev.izqalan.myukm_netbeans.views.MainMenu;
+import dev.izqalan.myukm.models.UserModel;
+import dev.izqalan.myukm.views.LoginView;
+import dev.izqalan.myukm.views.MainMenu;
 import java.util.HashMap;
 
 /**

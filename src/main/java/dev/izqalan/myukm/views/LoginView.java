@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package dev.izqalan.myukm_netbeans.views;
+package dev.izqalan.myukm.views;
 
-import dev.izqalan.myukm_netbeans.controllers.AppController;
+import dev.izqalan.myukm.controllers.AppController;
 
 /**
  *
