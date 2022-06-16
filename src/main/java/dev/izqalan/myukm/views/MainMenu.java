@@ -4,12 +4,15 @@
  */
 package dev.izqalan.myukm.views;
 
+import dev.izqalan.myukm.controllers.AppController;
+
 /**
  *
  * @author Izqalan
  */
 public class MainMenu extends javax.swing.JFrame {
-
+    
+    AppController app = new AppController();
     /**
      * Creates new form MainMenu
      */
@@ -40,6 +43,11 @@ public class MainMenu extends javax.swing.JFrame {
         pkukmButton.setToolTipText("");
 
         walletButton.setText("E-wallet");
+        walletButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                walletButtonActionPerformed(evt);
+            }
+        });
 
         logoutButton.setText("Logout");
 
@@ -72,6 +80,11 @@ public class MainMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void walletButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_walletButtonActionPerformed
+        // TODO add your handling code here:
+        app.viewEwalletMenu(this);
+    }//GEN-LAST:event_walletButtonActionPerformed
 
     /**
      * @param args the command line arguments
