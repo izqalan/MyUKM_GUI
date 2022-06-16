@@ -11,4 +11,13 @@
         <exec.mainClass>dev.izqalan.myukm_netbeans.MyUKM_netbeans</exec.mainClass>
     </properties>
     <name>MyUKM_GUI</name>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.toedter/jcalendar -->
+        <dependency>
+            <groupId>com.toedter</groupId>
+            <artifactId>jcalendar</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+    </dependencies>
 </project>
