@@ -19,7 +19,9 @@ public class MainMenu extends javax.swing.JFrame {
     public MainMenu(AppController controller) {
         this.app = controller;
         initComponents();
+        userLabel.setText("Hi, "+app.getCurrentUser().getEmail());
         setVisible(true);
+        setTitle("Main menu");
     }
 
     /**
@@ -35,6 +37,7 @@ public class MainMenu extends javax.swing.JFrame {
         pkukmButton = new javax.swing.JButton();
         walletButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
+        userLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,11 +45,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         pkukmButton.setText("Doctor's appt");
         pkukmButton.setToolTipText("");
-        pkukmButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	pkukmButtonActionPerformed(evt);
-            }
-        });
+
         walletButton.setText("E-wallet");
         walletButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +54,14 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         logoutButton.setText("Logout");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
+
+        userLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        userLabel.setText("Hi, User");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,17 +69,21 @@ public class MainMenu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(81, 81, 81)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(libraryButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pkukmButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(walletButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(userLabel)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(libraryButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pkukmButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(walletButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
+                .addGap(96, 96, 96)
+                .addComponent(userLabel)
+                .addGap(18, 18, 18)
                 .addComponent(libraryButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pkukmButton)
@@ -80,7 +91,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(walletButton)
                 .addGap(66, 66, 66)
                 .addComponent(logoutButton)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
 
         pack();
@@ -97,11 +108,17 @@ public class MainMenu extends javax.swing.JFrame {
         app.showEwalletMenu(this, app);
     }//GEN-LAST:event_walletButtonActionPerformed
 
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        app.setCurrentUser(null);
+        app.showLoginView(this, app);
+    }//GEN-LAST:event_logoutButtonActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton libraryButton;
     private javax.swing.JButton logoutButton;
     private javax.swing.JButton pkukmButton;
+    private javax.swing.JLabel userLabel;
     private javax.swing.JButton walletButton;
     // End of variables declaration//GEN-END:variables
 }
