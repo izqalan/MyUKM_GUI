@@ -41,7 +41,11 @@ public class MainMenu extends javax.swing.JFrame {
 
         pkukmButton.setText("Doctor's appt");
         pkukmButton.setToolTipText("");
-
+        pkukmButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	pkukmButtonActionPerformed(evt);
+            }
+        });
         walletButton.setText("E-wallet");
         walletButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +85,12 @@ public class MainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void pkukmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+    	AppController.MedicalMenuScreenShow();
+        
+    }
+    
     private void walletButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_walletButtonActionPerformed
         // TODO add your handling code here:
         app.viewEwalletMenu(this);
