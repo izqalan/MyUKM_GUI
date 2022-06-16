@@ -6,12 +6,15 @@ package dev.izqalan.myukm.controllers;
 
 import dev.izqalan.myukm.models.MedicalModel;
 import dev.izqalan.myukm.models.UserModel;
+import dev.izqalan.myukm.views.AddBalanceView;
 import dev.izqalan.myukm.views.AppointmentHistoryView;
 import dev.izqalan.myukm.views.EwalletView;
 import dev.izqalan.myukm.views.LoginView;
 import dev.izqalan.myukm.views.MainMenu;
 import dev.izqalan.myukm.views.MedicalMenuView;
 import dev.izqalan.myukm.views.MedicalScreenView;
+import dev.izqalan.myukm.views.PaymentView;
+//import dev.izqalan.myukm.views.QRScannerView;
 import dev.izqalan.myukm.views.ServiceScreenView;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,7 +26,7 @@ import javax.swing.JFrame;
  */
 public class AppController {
 
-    UserModel user = new UserModel();
+    public UserModel user = new UserModel();
     public static HashMap<String, UserModel> usersList = new HashMap<>();
 
     public static void main(String[] args) {
@@ -35,7 +38,8 @@ public class AppController {
     public static void seed() {
         String email = "admin";
         String password = "admin";
-        UserModel permaUser = new UserModel(email, password);
+        double balance = 21.00;
+        UserModel permaUser = new UserModel(email, password, balance);
         usersList.put(email, permaUser);
     }
 
@@ -47,7 +51,7 @@ public class AppController {
     public boolean login(String email, String password) {
         try {
             if (usersList.containsKey(email) && usersList.get(email).getPassword().equals(password)) {
-                user.setCurrentUser(new UserModel(email, password));
+                user.setCurrentUser(usersList.get(email));
             }
         } catch (Error e) {
             return false;
@@ -72,14 +76,14 @@ public class AppController {
         return true;
     }
 
-    public void viewMainMenu(JFrame currentFrame) {
+    public void viewMainMenu(JFrame currentFrame, AppController app) {
         currentFrame.dispose();
-        new MainMenu();
+        new MainMenu(app);
     }
-    
-    public void viewEwalletMenu(JFrame currentFrame) {
+
+    public void showEwalletMenu(JFrame currentFrame, AppController app) {
         currentFrame.dispose();
-        new EwalletView(this);
+        new EwalletView(app);
     }
 
     //medical
@@ -162,4 +166,49 @@ public class AppController {
         return medicalModel.getTime();
         //return medicalScreen.getTimeList();
     }
+
+    public UserModel getCurrentUser() {
+        return user.getCurrentUser();
+    }
+
+    public void showAddBalanceView(JFrame currentFrame, AppController app) {
+        currentFrame.dispose();
+        new AddBalanceView(app);
+    }
+
+//    public void showQRScannerView(JFrame currentFrame, AppController app, double amount) {
+//        currentFrame.dispose();
+//        new QRScannerView(app, amount);
+//    }
+
+    public void showPaymentView(JFrame currentFrame, AppController app) {
+        currentFrame.dispose();
+        new PaymentView(app);
+    }
+
+    public boolean deductFunds(double amount){
+        try {
+            if (user.getCurrentUser().getBalance() >= amount){
+                user.setBalance(user.getCurrentUser().getBalance() - amount);
+            } else {
+                throw new Error("Insufficient funds");
+            }
+            user.setCurrentUser(user);
+        } catch (Error e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
+    }
+    public boolean addFunds(double amount) {
+        try {
+            user.setBalance(user.getCurrentUser().getBalance() + amount);
+            user.setCurrentUser(user);
+        } catch (Error e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
 }
