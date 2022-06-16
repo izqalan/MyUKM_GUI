@@ -94,7 +94,7 @@ public class LoginView extends javax.swing.JFrame {
         boolean response = app.login(emailTextField.getText(), passwordTextField.getText());
         if (response) {
             System.out.println("login success open menu");
-            app.viewMainMenu(this);
+            app.viewMainMenu();
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
