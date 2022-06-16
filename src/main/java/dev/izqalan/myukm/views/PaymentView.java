@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public class PaymentView extends javax.swing.JFrame {
 
     private AppController app;
-    
+
     public PaymentView(AppController controller) {
         this.app = controller;
         initComponents();
@@ -98,8 +98,13 @@ public class PaymentView extends javax.swing.JFrame {
 
     private void payButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButtonActionPerformed
 //        app.showQRScannerView(this, app, Double.parseDouble(amountField.getText()));
-        JOptionPane.showMessageDialog(this, "Payment of RM" + amountField.getText() + " is accepted", "Success", JOptionPane.INFORMATION_MESSAGE);
-        app.deductFunds(Double.parseDouble(amountField.getText()));
+        boolean response = app.deductFunds(Double.parseDouble(amountField.getText()));
+
+        if (response) {
+            JOptionPane.showMessageDialog(this, "Payment of RM" + amountField.getText() + " is accepted", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Insufficient fund", "Failed", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_payButtonActionPerformed
 
     private void goBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackButtonActionPerformed
