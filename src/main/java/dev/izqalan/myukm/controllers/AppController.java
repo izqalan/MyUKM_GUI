@@ -14,6 +14,7 @@ import dev.izqalan.myukm.views.MainMenu;
 import dev.izqalan.myukm.views.MedicalMenuView;
 import dev.izqalan.myukm.views.MedicalScreenView;
 import dev.izqalan.myukm.views.PaymentView;
+import dev.izqalan.myukm.views.RegisterView;
 //import dev.izqalan.myukm.views.QRScannerView;
 import dev.izqalan.myukm.views.ServiceScreenView;
 import java.util.ArrayList;
@@ -50,13 +51,16 @@ public class AppController {
      */
     public boolean login(String email, String password) {
         try {
+            System.out.println(usersList.containsKey(email));
+            System.out.println(usersList.get(email).getPassword().equals(password));
             if (usersList.containsKey(email) && usersList.get(email).getPassword().equals(password)) {
                 user.setCurrentUser(usersList.get(email));
+                return true;
             }
         } catch (Error e) {
-            return false;
+            
         }
-        return true;
+        return false;
     }
 
     /**
@@ -74,6 +78,16 @@ public class AppController {
             return false;
         }
         return true;
+    }
+    
+    public void showRegisterView(JFrame currentFrame, AppController app) {
+        currentFrame.dispose();
+        new RegisterView(app);
+    }
+    
+    public void showLoginView(JFrame currentFrame, AppController app){
+        currentFrame.dispose();
+        new LoginView(app);
     }
 
     public void viewMainMenu(JFrame currentFrame, AppController app) {
@@ -170,6 +184,10 @@ public class AppController {
     public UserModel getCurrentUser() {
         return user.getCurrentUser();
     }
+    
+    public void setCurrentUser(UserModel u) {
+        user.setCurrentUser(u);
+    };
 
     public void showAddBalanceView(JFrame currentFrame, AppController app) {
         currentFrame.dispose();
