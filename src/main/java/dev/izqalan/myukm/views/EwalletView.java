@@ -7,6 +7,7 @@ package dev.izqalan.myukm.views;
 import dev.izqalan.myukm.controllers.AppController;
 import dev.izqalan.myukm.models.UserModel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,6 +38,11 @@ public class EwalletView extends javax.swing.JFrame {
         payButton.setText("Pay Now");
 
         reloadButton.setText("Reload");
+        reloadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reloadButtonActionPerformed(evt);
+            }
+        });
 
         backButton.setText("Go back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -85,6 +91,10 @@ public class EwalletView extends javax.swing.JFrame {
         // TODO add your handling code here:
         app.viewMainMenu(this, app);
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void reloadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reloadButtonActionPerformed
+        app.showAddBalanceView(this, app);
+    }//GEN-LAST:event_reloadButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

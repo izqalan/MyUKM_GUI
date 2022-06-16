@@ -94,7 +94,7 @@ public class MainMenu extends javax.swing.JFrame {
     
     private void walletButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_walletButtonActionPerformed
         // TODO add your handling code here:
-        app.viewEwalletMenu(this, app);
+        app.showEwalletMenu(this, app);
     }//GEN-LAST:event_walletButtonActionPerformed
 
     

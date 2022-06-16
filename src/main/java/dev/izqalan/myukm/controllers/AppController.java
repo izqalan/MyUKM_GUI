@@ -6,6 +6,7 @@ package dev.izqalan.myukm.controllers;
 
 import dev.izqalan.myukm.models.MedicalModel;
 import dev.izqalan.myukm.models.UserModel;
+import dev.izqalan.myukm.views.AddBalanceView;
 import dev.izqalan.myukm.views.AppointmentHistoryView;
 import dev.izqalan.myukm.views.EwalletView;
 import dev.izqalan.myukm.views.LoginView;
@@ -16,6 +17,7 @@ import dev.izqalan.myukm.views.ServiceScreenView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -78,7 +80,7 @@ public class AppController {
         new MainMenu(app);
     }
     
-    public void viewEwalletMenu(JFrame currentFrame, AppController app) {
+    public void showEwalletMenu(JFrame currentFrame, AppController app) {
         currentFrame.dispose();
         new EwalletView(app);
     }
@@ -166,5 +168,21 @@ public class AppController {
     
     public UserModel getCurrentUser(){
         return user.getCurrentUser();
+    }
+    
+    public void showAddBalanceView(JFrame currentFrame, AppController app) {
+        currentFrame.dispose();
+        new AddBalanceView(app);
+    }
+    
+    public boolean addFunds(double amount){
+        try{
+            user.setBalance(user.getCurrentUser().getBalance() + amount);
+            user.setCurrentUser(user);
+        }catch(Error e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+       return true;
     }
 }
