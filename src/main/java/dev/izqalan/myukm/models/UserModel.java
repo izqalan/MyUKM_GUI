@@ -13,13 +13,22 @@ public class UserModel {
     private String email;
     private String password;
     private UserModel currentUser;
+    private double balance;
 
     public UserModel() {
+        this.balance = 0.00;
     }
     
     public UserModel(String email, String password) {
         this.email = email;
         this.password = password;
+        this.balance = 0.00;
+    }
+    
+    public UserModel(String email, String password, double balance) {
+        this.email = email;
+        this.password = password;
+        this.balance = balance;
     }
 
     public UserModel getCurrentUser() {
@@ -44,6 +53,14 @@ public class UserModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
     
     

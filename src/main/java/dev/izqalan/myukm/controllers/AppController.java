@@ -23,7 +23,7 @@ import javax.swing.JFrame;
  */
 public class AppController {
 
-    UserModel user = new UserModel();
+    public UserModel user = new UserModel();
     public static HashMap<String, UserModel> usersList = new HashMap<>();
 
     public static void main(String[] args) {
@@ -35,7 +35,8 @@ public class AppController {
     public static void seed() {
         String email = "admin";
         String password = "admin";
-        UserModel permaUser = new UserModel(email, password);
+        double balance = 21.00;
+        UserModel permaUser = new UserModel(email, password, balance);
         usersList.put(email, permaUser);
     }
 
@@ -47,7 +48,7 @@ public class AppController {
     public boolean login(String email, String password) {
         try {
             if (usersList.containsKey(email) && usersList.get(email).getPassword().equals(password)) {
-                user.setCurrentUser(new UserModel(email, password));
+                user.setCurrentUser(usersList.get(email));
             }
         } catch (Error e) {
             return false;
@@ -72,14 +73,14 @@ public class AppController {
         return true;
     }
 
-    public void viewMainMenu(JFrame currentFrame) {
+    public void viewMainMenu(JFrame currentFrame, AppController app) {
         currentFrame.dispose();
-        new MainMenu();
+        new MainMenu(app);
     }
     
-    public void viewEwalletMenu(JFrame currentFrame) {
+    public void viewEwalletMenu(JFrame currentFrame, AppController app) {
         currentFrame.dispose();
-        new EwalletView(this);
+        new EwalletView(app);
     }
 
     //medical
@@ -161,5 +162,9 @@ public class AppController {
     public static ArrayList<String> getTimeArray() {
         return medicalModel.getTime();
         //return medicalScreen.getTimeList();
+    }
+    
+    public UserModel getCurrentUser(){
+        return user.getCurrentUser();
     }
 }
