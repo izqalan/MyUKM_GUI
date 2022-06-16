@@ -13,11 +13,12 @@ import dev.izqalan.myukm.views.LoginView;
 import dev.izqalan.myukm.views.MainMenu;
 import dev.izqalan.myukm.views.MedicalMenuView;
 import dev.izqalan.myukm.views.MedicalScreenView;
+import dev.izqalan.myukm.views.PaymentView;
+//import dev.izqalan.myukm.views.QRScannerView;
 import dev.izqalan.myukm.views.ServiceScreenView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -79,7 +80,7 @@ public class AppController {
         currentFrame.dispose();
         new MainMenu(app);
     }
-    
+
     public void showEwalletMenu(JFrame currentFrame, AppController app) {
         currentFrame.dispose();
         new EwalletView(app);
@@ -165,24 +166,49 @@ public class AppController {
         return medicalModel.getTime();
         //return medicalScreen.getTimeList();
     }
-    
-    public UserModel getCurrentUser(){
+
+    public UserModel getCurrentUser() {
         return user.getCurrentUser();
     }
-    
+
     public void showAddBalanceView(JFrame currentFrame, AppController app) {
         currentFrame.dispose();
         new AddBalanceView(app);
     }
-    
-    public boolean addFunds(double amount){
-        try{
-            user.setBalance(user.getCurrentUser().getBalance() + amount);
+
+//    public void showQRScannerView(JFrame currentFrame, AppController app, double amount) {
+//        currentFrame.dispose();
+//        new QRScannerView(app, amount);
+//    }
+
+    public void showPaymentView(JFrame currentFrame, AppController app) {
+        currentFrame.dispose();
+        new PaymentView(app);
+    }
+
+    public boolean deductFunds(double amount){
+        try {
+            if (user.getCurrentUser().getBalance() >= amount){
+                user.setBalance(user.getCurrentUser().getBalance() - amount);
+            } else {
+                throw new Error("Insufficient funds");
+            }
             user.setCurrentUser(user);
-        }catch(Error e){
+        } catch (Error e) {
             System.out.println(e.getMessage());
             return false;
         }
-       return true;
+        return true;
     }
+    public boolean addFunds(double amount) {
+        try {
+            user.setBalance(user.getCurrentUser().getBalance() + amount);
+            user.setCurrentUser(user);
+        } catch (Error e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
 }

@@ -36,6 +36,11 @@ public class EwalletView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         payButton.setText("Pay Now");
+        payButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                payButtonActionPerformed(evt);
+            }
+        });
 
         reloadButton.setText("Reload");
         reloadButton.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +100,10 @@ public class EwalletView extends javax.swing.JFrame {
     private void reloadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reloadButtonActionPerformed
         app.showAddBalanceView(this, app);
     }//GEN-LAST:event_reloadButtonActionPerformed
+
+    private void payButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButtonActionPerformed
+        app.showPaymentView(this, app);
+    }//GEN-LAST:event_payButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

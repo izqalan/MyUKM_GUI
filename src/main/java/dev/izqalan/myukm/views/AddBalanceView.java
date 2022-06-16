@@ -93,7 +93,6 @@ public class AddBalanceView extends javax.swing.JFrame {
         try {
             double fund = Double.parseDouble(addFundsField.getText());
             boolean response = this.app.addFunds(fund);
-            System.out.println(this.app.user.getBalance());
             JOptionPane.showMessageDialog(this, "Funds accepted", "Success", JOptionPane.INFORMATION_MESSAGE);
         } catch (Error e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), "Fail", JOptionPane.ERROR_MESSAGE);
