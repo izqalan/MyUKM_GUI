@@ -22,6 +22,7 @@ public class EwalletView extends javax.swing.JFrame {
         System.out.print(app.getCurrentUser().getBalance());
         this.balanceLabel.setText("RM"+app.getCurrentUser().getBalance());
         setVisible(true);
+        setTitle("Ewallet");
     }
 
     @SuppressWarnings("unchecked")

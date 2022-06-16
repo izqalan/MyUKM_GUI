@@ -19,6 +19,7 @@ public class RegisterView extends javax.swing.JFrame {
         this.app = controller;
         initComponents();
         setVisible(true);
+        setTitle("Registration");
     }
 
     /**

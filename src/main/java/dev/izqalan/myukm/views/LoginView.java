@@ -19,12 +19,14 @@ public class LoginView extends javax.swing.JFrame {
     AppController app = new AppController();
     public LoginView() {
         initComponents();
+        setTitle("Login");
     }
 
     public LoginView(AppController controller) {
         this.app = controller;
         initComponents();
         setVisible(true);
+        setTitle("Login");
     }
 
     /**

@@ -19,6 +19,7 @@ public class PaymentView extends javax.swing.JFrame {
         this.app = controller;
         initComponents();
         setVisible(true);
+        setTitle("Payment");
     }
 
     /**
