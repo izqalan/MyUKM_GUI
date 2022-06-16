@@ -24,57 +24,48 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="libraryButton" max="32767" attributes="0"/>
-                  <Component id="pkukmButton" max="32767" attributes="0"/>
-                  <Component id="walletButton" max="32767" attributes="0"/>
-                  <Component id="logoutButton" max="32767" attributes="0"/>
+                  <Component id="reloadButton" max="32767" attributes="0"/>
+                  <Component id="payButton" max="32767" attributes="0"/>
+                  <Component id="backButton" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="81" max="32767" attributes="0"/>
+              <EmptySpace pref="101" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
-              <Component id="libraryButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
+              <Component id="payButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="pkukmButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="walletButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-              <Component id="logoutButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="141" max="32767" attributes="0"/>
+              <Component id="reloadButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="backButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="205" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="libraryButton">
+    <Component class="javax.swing.JButton" name="payButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Find books"/>
+        <Property name="text" type="java.lang.String" value="Pay Now"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="pkukmButton">
+    <Component class="javax.swing.JButton" name="reloadButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Doctor&apos;s appt"/>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="text" type="java.lang.String" value="Reload"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="walletButton">
+    <Component class="javax.swing.JButton" name="backButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="E-wallet"/>
+        <Property name="text" type="java.lang.String" value="Go back"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="walletButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtonActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="logoutButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Logout"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>
