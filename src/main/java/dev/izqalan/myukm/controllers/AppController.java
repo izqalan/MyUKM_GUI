@@ -15,6 +15,7 @@ import dev.izqalan.myukm.views.MedicalMenuView;
 import dev.izqalan.myukm.views.MedicalScreenView;
 import dev.izqalan.myukm.views.PaymentView;
 import dev.izqalan.myukm.views.RegisterView;
+import dev.izqalan.myukm.views.SearchBookView;
 //import dev.izqalan.myukm.views.QRScannerView;
 import dev.izqalan.myukm.views.ServiceScreenView;
 import java.util.ArrayList;
@@ -93,6 +94,11 @@ public class AppController {
     public void viewMainMenu(JFrame currentFrame, AppController app) {
         currentFrame.dispose();
         new MainMenu(app);
+    }
+    
+    public void showLibraryView(JFrame currentFrame, AppController app) {
+        currentFrame.dispose();
+        new SearchBookView(app);
     }
 
     public void showEwalletMenu(JFrame currentFrame, AppController app) {

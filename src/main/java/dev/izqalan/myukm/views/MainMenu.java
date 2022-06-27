@@ -42,6 +42,11 @@ public class MainMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         libraryButton.setText("Find books");
+        libraryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                libraryButtonActionPerformed(evt);
+            }
+        });
 
         pkukmButton.setText("Doctor's appt");
         pkukmButton.setToolTipText("");
@@ -116,6 +121,10 @@ public class MainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         app.MedicalMenuScreenShow();
     }//GEN-LAST:event_pkukmButtonActionPerformed
+
+    private void libraryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_libraryButtonActionPerformed
+        app.showLibraryView(this, app);
+    }//GEN-LAST:event_libraryButtonActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
