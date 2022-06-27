@@ -115,7 +115,7 @@ public class PaymentView extends javax.swing.JFrame {
 
     private void payButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButtonActionPerformed
 //        app.showQRScannerView(this, app, Double.parseDouble(amountField.getText()));
-        System.out.println(Math.random());
+        
         boolean response = app.deductFunds(
                 Double.parseDouble(amountField.getText()),
                 UUID.randomUUID(),
@@ -128,7 +128,6 @@ public class PaymentView extends javax.swing.JFrame {
             String[] buttons = {"Reload", "Okay"};
             int rc = JOptionPane.showOptionDialog(this, "Insufficient fund",
                      "Failed", JOptionPane.ERROR_MESSAGE, 0, null, buttons, buttons[1]);
-            System.out.println(rc);
 
             if (rc == 0) {
                 app.showAddBalanceView(this, app);
