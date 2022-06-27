@@ -104,7 +104,14 @@ public class PaymentView extends javax.swing.JFrame {
         if (response) {
             JOptionPane.showMessageDialog(this, "Payment of RM" + amountField.getText() + " is accepted", "Success", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "Insufficient fund", "Failed", JOptionPane.ERROR_MESSAGE);
+            String[] buttons = { "Reload", "Okay" };
+            int rc = JOptionPane.showOptionDialog(this, "Insufficient fund"
+                    , "Failed", JOptionPane.ERROR_MESSAGE, 0, null, buttons, buttons[1]);
+            System.out.println(rc);
+            
+            if (rc == 0){
+                app.showAddBalanceView(this, app);
+            }
         }
     }//GEN-LAST:event_payButtonActionPerformed
 
