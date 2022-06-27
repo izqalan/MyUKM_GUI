@@ -7,7 +7,7 @@ import dev.izqalan.myukm.controllers.AppController;
 
 /**
  *
- * @author Izqalan
+ * @author Izqalan Nor'Izad, Peggy Yeo, Lam Wei Long
  */
 public class App {
     
