@@ -5,6 +5,8 @@
 package dev.izqalan.myukm.views;
 
 import dev.izqalan.myukm.controllers.AppController;
+import java.time.LocalDateTime;
+import java.util.UUID;
 import javax.swing.JOptionPane;
 
 /**
@@ -36,6 +38,8 @@ public class PaymentView extends javax.swing.JFrame {
         infoLabel = new javax.swing.JLabel();
         payButton = new javax.swing.JButton();
         goBackButton = new javax.swing.JButton();
+        destinationField = new javax.swing.JTextField();
+        toLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +61,10 @@ public class PaymentView extends javax.swing.JFrame {
             }
         });
 
+        destinationField.setToolTipText("NRIC or Phone Number");
+
+        toLabel.setText("To");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -68,14 +76,18 @@ public class PaymentView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(infoLabel)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(currencyLabel)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(currencyLabel)
+                                    .addComponent(toLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(amountField, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(destinationField)
+                                    .addComponent(amountField, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))))
                         .addGap(88, 88, 88))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(goBackButton)
-                            .addComponent(payButton))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(payButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(goBackButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(115, 115, 115))))
         );
         layout.setVerticalGroup(
@@ -87,11 +99,15 @@ public class PaymentView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(amountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(currencyLabel))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(destinationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(toLabel))
+                .addGap(49, 49, 49)
                 .addComponent(payButton)
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(goBackButton)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
 
         pack();
@@ -99,17 +115,22 @@ public class PaymentView extends javax.swing.JFrame {
 
     private void payButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButtonActionPerformed
 //        app.showQRScannerView(this, app, Double.parseDouble(amountField.getText()));
-        boolean response = app.deductFunds(Double.parseDouble(amountField.getText()));
+        System.out.println(Math.random());
+        boolean response = app.deductFunds(
+                Double.parseDouble(amountField.getText()),
+                UUID.randomUUID(),
+                destinationField.getText(),
+                LocalDateTime.now());
 
         if (response) {
             JOptionPane.showMessageDialog(this, "Payment of RM" + amountField.getText() + " is accepted", "Success", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            String[] buttons = { "Reload", "Okay" };
-            int rc = JOptionPane.showOptionDialog(this, "Insufficient fund"
-                    , "Failed", JOptionPane.ERROR_MESSAGE, 0, null, buttons, buttons[1]);
+            String[] buttons = {"Reload", "Okay"};
+            int rc = JOptionPane.showOptionDialog(this, "Insufficient fund",
+                     "Failed", JOptionPane.ERROR_MESSAGE, 0, null, buttons, buttons[1]);
             System.out.println(rc);
-            
-            if (rc == 0){
+
+            if (rc == 0) {
                 app.showAddBalanceView(this, app);
             }
         }
@@ -122,8 +143,10 @@ public class PaymentView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField amountField;
     private javax.swing.JLabel currencyLabel;
+    private javax.swing.JTextField destinationField;
     private javax.swing.JButton goBackButton;
     private javax.swing.JLabel infoLabel;
     private javax.swing.JButton payButton;
+    private javax.swing.JLabel toLabel;
     // End of variables declaration//GEN-END:variables
 }

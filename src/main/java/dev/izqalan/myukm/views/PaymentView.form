@@ -29,18 +29,24 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="infoLabel" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="currencyLabel" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="currencyLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="toLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="amountField" min="-2" pref="107" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="destinationField" max="32767" attributes="0"/>
+                                  <Component id="amountField" pref="107" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="goBackButton" min="-2" max="-2" attributes="0"/>
-                          <Component id="payButton" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="payButton" max="32767" attributes="0"/>
+                          <Component id="goBackButton" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
                   </Group>
@@ -58,11 +64,16 @@
                   <Component id="amountField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="currencyLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="destinationField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="toLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Component id="payButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="goBackButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="165" max="32767" attributes="0"/>
+              <EmptySpace pref="133" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -95,6 +106,16 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="goBackButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="destinationField">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="NRIC or Phone Number"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="toLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="To"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

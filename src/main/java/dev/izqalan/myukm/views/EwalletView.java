@@ -33,6 +33,7 @@ public class EwalletView extends javax.swing.JFrame {
         reloadButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         balanceLabel = new javax.swing.JLabel();
+        historyButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,6 +60,14 @@ public class EwalletView extends javax.swing.JFrame {
 
         balanceLabel.setText("RM0.00");
 
+        historyButton.setText("Transaction History");
+        historyButton.setActionCommand("");
+        historyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historyButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -66,15 +75,18 @@ public class EwalletView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(balanceLabel))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(91, 91, 91)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(reloadButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(payButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(backButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(balanceLabel)))
-                .addContainerGap(101, Short.MAX_VALUE))
+                        .addGap(65, 65, 65)
+                        .addComponent(historyButton)))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,9 +97,11 @@ public class EwalletView extends javax.swing.JFrame {
                 .addComponent(payButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(reloadButton)
-                .addGap(50, 50, 50)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(historyButton)
+                .addGap(60, 60, 60)
                 .addComponent(backButton)
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         pack();
@@ -106,10 +120,16 @@ public class EwalletView extends javax.swing.JFrame {
         app.showPaymentView(this, app);
     }//GEN-LAST:event_payButtonActionPerformed
 
+    private void historyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyButtonActionPerformed
+        // TODO add your handling code here:
+        app.showTransactionHistoryView(this, app);
+    }//GEN-LAST:event_historyButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JLabel balanceLabel;
+    private javax.swing.JButton historyButton;
     private javax.swing.JButton payButton;
     private javax.swing.JButton reloadButton;
     // End of variables declaration//GEN-END:variables

@@ -5,6 +5,7 @@
 package dev.izqalan.myukm.controllers;
 
 import dev.izqalan.myukm.models.MedicalModel;
+import dev.izqalan.myukm.models.PaymentModel;
 import dev.izqalan.myukm.models.UserModel;
 import dev.izqalan.myukm.views.AddBalanceView;
 import dev.izqalan.myukm.views.AppointmentHistoryView;
@@ -13,14 +14,19 @@ import dev.izqalan.myukm.views.LoginView;
 import dev.izqalan.myukm.views.MainMenu;
 import dev.izqalan.myukm.views.MedicalMenuView;
 import dev.izqalan.myukm.views.MedicalScreenView;
+import dev.izqalan.myukm.views.PaymentHistoryView;
 import dev.izqalan.myukm.views.PaymentView;
 import dev.izqalan.myukm.views.RegisterView;
 import dev.izqalan.myukm.views.SearchBookView;
 //import dev.izqalan.myukm.views.QRScannerView;
 import dev.izqalan.myukm.views.ServiceScreenView;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -30,6 +36,7 @@ public class AppController {
 
     public UserModel user = new UserModel();
     public static HashMap<String, UserModel> usersList = new HashMap<>();
+    ArrayList<PaymentModel> transactionList = new ArrayList<>(); 
     
     public static void run() {
         LoginView loginView = new LoginView();
@@ -209,11 +216,18 @@ public class AppController {
         currentFrame.dispose();
         new PaymentView(app);
     }
+    
+    public void showTransactionHistoryView(JFrame currentFrame, AppController app) {
+        currentFrame.dispose();
+        new PaymentHistoryView(app);
+    }
 
-    public boolean deductFunds(double amount){
+    public boolean deductFunds(double amount, UUID id, String destination, LocalDateTime createdAt){
         try {
             if (user.getCurrentUser().getBalance() >= amount){
                 user.setBalance(user.getCurrentUser().getBalance() - amount);
+                transactionList.add(new PaymentModel(amount, id, destination, createdAt));
+                
             } else {
                 throw new Error("Insufficient funds");
             }
@@ -235,4 +249,24 @@ public class AppController {
         return true;
     }
 
+    public ArrayList getTransactionList() {
+        return transactionList;
+    }
+    
+    public Object[] getTransactionDetails(){
+        Object[] data = this.transactionList.toArray();
+        return data;
+    }
+    public void loadTransactionList(DefaultTableModel model){
+        for(int i = 0; i < this.transactionList.size(); i++){
+            System.out.println(this.transactionList.get(i).getPrice());
+            UUID id = this.transactionList.get(i).getId();
+            double amount = this.transactionList.get(i).getPrice();
+            String to = this.transactionList.get(i).getToWhom();
+            String createdAt = this.transactionList.get(i).getCreatedAt().toString();
+            
+            Object[] rowData = {id, amount, to, createdAt};
+            model.addRow(rowData);
+        }
+    }
 }
