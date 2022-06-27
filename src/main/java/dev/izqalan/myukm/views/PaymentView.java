@@ -115,22 +115,25 @@ public class PaymentView extends javax.swing.JFrame {
 
     private void payButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButtonActionPerformed
 //        app.showQRScannerView(this, app, Double.parseDouble(amountField.getText()));
-        
-        boolean response = app.deductFunds(
-                Double.parseDouble(amountField.getText()),
-                UUID.randomUUID(),
-                destinationField.getText(),
-                LocalDateTime.now());
-
-        if (response) {
-            JOptionPane.showMessageDialog(this, "Payment of RM" + amountField.getText() + " is accepted", "Success", JOptionPane.INFORMATION_MESSAGE);
+        if (amountField.getText().isEmpty() || destinationField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Field is empty", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
-            String[] buttons = {"Reload", "Okay"};
-            int rc = JOptionPane.showOptionDialog(this, "Insufficient fund",
-                     "Failed", JOptionPane.ERROR_MESSAGE, 0, null, buttons, buttons[1]);
+            boolean response = app.deductFunds(
+                    Double.parseDouble(amountField.getText()),
+                    UUID.randomUUID(),
+                    destinationField.getText(),
+                    LocalDateTime.now());
 
-            if (rc == 0) {
-                app.showAddBalanceView(this, app);
+            if (response) {
+                JOptionPane.showMessageDialog(this, "Payment of RM" + amountField.getText() + " is accepted", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                String[] buttons = {"Reload", "Okay"};
+                int rc = JOptionPane.showOptionDialog(this, "Insufficient fund",
+                        "Failed", JOptionPane.ERROR_MESSAGE, 0, null, buttons, buttons[1]);
+
+                if (rc == 0) {
+                    app.showAddBalanceView(this, app);
+                }
             }
         }
     }//GEN-LAST:event_payButtonActionPerformed
