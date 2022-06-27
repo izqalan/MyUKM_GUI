@@ -35,9 +35,9 @@ public class RegisterView extends javax.swing.JFrame {
         emailField = new javax.swing.JTextField();
         emailLabel = new javax.swing.JLabel();
         pwdLabel = new javax.swing.JLabel();
-        passwordField = new javax.swing.JTextField();
         registerButton = new javax.swing.JButton();
         gotoLoginButton = new javax.swing.JButton();
+        passwordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,18 +97,18 @@ public class RegisterView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pwdLabel)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registerButton)
                     .addComponent(gotoLoginButton))
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addContainerGap(256, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        boolean response = app.register(emailField.getText(), passwordField.getText());
+        boolean response = app.register(emailField.getText(), new String(passwordField.getPassword()));
         if (response) {
             JOptionPane.showMessageDialog(this, "Registration Success", "Success", JOptionPane.INFORMATION_MESSAGE);
         } else {
@@ -126,7 +126,7 @@ public class RegisterView extends javax.swing.JFrame {
     private javax.swing.JTextField emailField;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JButton gotoLoginButton;
-    private javax.swing.JTextField passwordField;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel pwdLabel;
     private javax.swing.JButton registerButton;
     private javax.swing.JLabel registerLabel;

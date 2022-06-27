@@ -39,18 +39,16 @@ public class LoginView extends javax.swing.JFrame {
     private void initComponents() {
 
         emailTextField = new javax.swing.JTextField();
-        passwordTextField = new javax.swing.JTextField();
         loginButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         registerButton = new javax.swing.JButton();
         emailLabel = new javax.swing.JLabel();
         pwdLabel = new javax.swing.JLabel();
+        passwordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         emailTextField.setName("email"); // NOI18N
-
-        passwordTextField.setName("password"); // NOI18N
 
         loginButton.setText("Login");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -95,8 +93,8 @@ public class LoginView extends javax.swing.JFrame {
                                     .addComponent(pwdLabel, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(12, 12, 12)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(passwordTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                                    .addComponent(emailTextField))))
+                                    .addComponent(passwordField)
+                                    .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addContainerGap(33, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -104,21 +102,20 @@ public class LoginView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pwdLabel)))
+                            .addComponent(pwdLabel)
+                            .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(emailLabel)
                         .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(40, 40, 40)
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginButton)
                     .addComponent(registerButton))
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addContainerGap(261, Short.MAX_VALUE))
         );
 
         pack();
@@ -126,7 +123,7 @@ public class LoginView extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-        boolean response = app.login(emailTextField.getText(), passwordTextField.getText());
+        boolean response = app.login(emailTextField.getText(), new String(passwordField.getPassword()));
         if (response) {
             System.out.println("login success open menu");
             app.viewMainMenu(this, app);
@@ -144,7 +141,7 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JTextField emailTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton loginButton;
-    private javax.swing.JTextField passwordTextField;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel pwdLabel;
     private javax.swing.JButton registerButton;
     // End of variables declaration//GEN-END:variables
