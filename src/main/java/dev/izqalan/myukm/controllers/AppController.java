@@ -29,8 +29,8 @@ public class AppController {
 
     public UserModel user = new UserModel();
     public static HashMap<String, UserModel> usersList = new HashMap<>();
-
-    public static void main(String[] args) {
+    
+    public static void run() {
         LoginView loginView = new LoginView();
         AppController.seed();
         loginView.run();

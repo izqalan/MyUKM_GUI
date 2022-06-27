@@ -45,6 +45,11 @@ public class MainMenu extends javax.swing.JFrame {
 
         pkukmButton.setText("Doctor's appt");
         pkukmButton.setToolTipText("");
+        pkukmButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pkukmButtonActionPerformed(evt);
+            }
+        });
 
         walletButton.setText("E-wallet");
         walletButton.addActionListener(new java.awt.event.ActionListener() {
@@ -97,12 +102,6 @@ public class MainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pkukmButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
-    	app.MedicalMenuScreenShow();
-        
-    }
-    
     private void walletButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_walletButtonActionPerformed
         // TODO add your handling code here:
         app.showEwalletMenu(this, app);
@@ -112,6 +111,11 @@ public class MainMenu extends javax.swing.JFrame {
         app.setCurrentUser(null);
         app.showLoginView(this, app);
     }//GEN-LAST:event_logoutButtonActionPerformed
+
+    private void pkukmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pkukmButtonActionPerformed
+        // TODO add your handling code here:
+        app.MedicalMenuScreenShow();
+    }//GEN-LAST:event_pkukmButtonActionPerformed
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

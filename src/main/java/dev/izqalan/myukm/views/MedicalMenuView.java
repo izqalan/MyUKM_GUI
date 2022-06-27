@@ -22,20 +22,6 @@ public class MedicalMenuView extends JFrame {
      * Launch the application.
      */
     static AppController controller;
-
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    MedicalMenuView frame = new MedicalMenuView();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
     /**
      * Create the frame.
      */
